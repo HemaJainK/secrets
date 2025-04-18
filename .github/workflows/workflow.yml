@@ -1,0 +1,18 @@
+name: Secret Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  use-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Use Secret Securely
+        env:
+          SECRET: ${{ secrets.SECRET }}
+        run: echo "The secret is set and being used securely."
